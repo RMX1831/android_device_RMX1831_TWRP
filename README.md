@@ -1,4 +1,4 @@
- SHRP Device Tree for Realme U1
+ TWRP Device Tree for Realme U1
 ===========================================
 
 The Realme U1 (codenames _"RMX1831"_ and _"RMX1833"_) is a mid-range smartphone from Realme, announced in November 2018.	
@@ -51,7 +51,7 @@ If you are a first time builder then do check Imp_for_first_time_builders.md fil
 ## To Build or Compilation ##
 ---------------
 
-Build the SHRP recovery using below command.
+Build the TWRP recovery using below command.
 
     export ALLOW_MISSING_DEPENDENCIES=true; source build/envsetup.sh; lunch omni_<device>-eng; mka recoveryimage
 
