@@ -14,6 +14,8 @@ on init
     mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 shell shell
     mkdir /config/usb_gadget/g1/functions/ffs.adb
     setprop sys.usb.ffs.aio_compat 1
+    # Erase the para partition to prevent recovery-looping
+    start erase_para
 
 on property:ro.debuggable=0
     # distinguish USB shoulde connect or not, i.e. CDP vs SDP
@@ -41,3 +43,9 @@ on property:ro.mtk_ufs_booting=1
     symlink /dev/block/sda /dev/block/platform/bootdevice/by-name/preloader_a
     symlink /dev/block/sdb /dev/block/platform/bootdevice/by-name/preloader_b
 
+service erase_para /sbin/dd if=/dev/zero of=/dev/block/platform/bootdevice/by-name/para
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+    oneshot
